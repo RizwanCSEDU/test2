@@ -1,0 +1,21 @@
+name: block runner c5x with sequential dependencies  
+run-name: Automated update No.1 (2025-05-23 18:08:03) 
+on:
+  pull_request: 
+    types: [opened, synchronize, reopened]
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+jobs:
+  # Original 22 jobs, now sleeping for 5 minutes
+  job_1: 
+    runs-on: ubuntu-latest #arc-runner-set-c5x
+    steps:
+      - name: Sleeping job for 800 seconds
+        run: |
+          echo "Job 1 starting sleep for 800 seconds"
+          sleep 660
+          echo "Job 1 finished sleeping"
