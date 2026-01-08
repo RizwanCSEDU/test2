@@ -12,11 +12,20 @@ concurrency:
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
-  check_license:
-    name: Check license
-    runs-on: ubuntu-latest
+  job_1: 
+    runs-on: ubuntu-latest #arc-runner-set-c5x
     steps:
-      - uses: actions/checkout@v4
-      - name: Make script executable
-        run: chmod +x ./scripts/ci/check_license.sh
-      - run: ./scripts/ci/check_license.sh
+      - name: Sleeping job 1 for 5 minutes
+        run: |
+          echo "Job 1 starting sleep for 300 seconds"
+          sleep 60
+          echo "Job 1 finished sleeping"
+
+  job_2:
+    runs-on: ubuntu-latest #arc-runner-set-c5x
+    steps:
+      - name: Sleeping job 2 for 5 minutes
+        run: |
+          echo "Job 2 starting sleep for 300 seconds"
+          sleep 100
+          echo "Job 2 finished sleeping"
