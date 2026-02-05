@@ -6,9 +6,6 @@ jobs:
   cancel:
     name: 'Cancel Previous Runs'
     runs-on: ubuntu-latest
-    permissions:
-      actions: write
-      contents: read
     timeout-minutes: 3
     steps:
       - uses: styfle/cancel-workflow-action@5df4e62aed82ea1f787d2a02ab3dbfcaa49ffdd1
