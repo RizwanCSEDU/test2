@@ -1,17 +1,17 @@
 name: CI
 on:
   pull_request:
-    paths-ignore:
-      - '.github/**'
-
-concurrency:
-  group: ${{ github.workflow }}-${{ github.event.pull_request.number }}
-  cancel-in-progress: true
   
 jobs:
+  cancel:
+    name: 'Cancel Previous Runs'
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: styfle/cancel-workflow-action@5df4e62aed82ea1f787d2a02ab3dbfcaa49ffdd1
   linter:
     runs-on: ubuntu-latest
-    if: github.actor == 'rizwanhrizvi'
+    needs: cancel
     steps:
       - uses: actions/checkout@v4
       - name: repo file execution
