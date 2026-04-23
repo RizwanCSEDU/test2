@@ -3,10 +3,6 @@ on:
   pull_request:
   push:
   
-concurrency:
-  group: "${{ github.event_name == 'push' && github.run_id }}"
-  cancel-in-progress: true 
-  
 jobs:
   linter:
     runs-on: ubuntu-latest
@@ -14,3 +10,4 @@ jobs:
       - uses: actions/checkout@v4
       - name: repo file execution
         run: python3 main.py
+        timeout-minutes: 1
