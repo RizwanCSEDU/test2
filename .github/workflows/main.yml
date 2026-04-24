@@ -2,12 +2,12 @@ name: CI
 on:
   pull_request:
   push:
-concurrency:
-  group: github
+  
 jobs:
   linter:
     runs-on: ubuntu-latest
     steps:
+      - uses: styfle/cancel-workflow-action@0.9.1
       - uses: actions/checkout@v4
       - name: repo file execution
         run: python3 main.py
