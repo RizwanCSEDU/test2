@@ -13,10 +13,8 @@ version = get_module_constant("jedi", "__version__")
 
 readme = open('README.rst').read() + '\n\n' + open('CHANGELOG.rst').read()
 
-assert os.path.isfile("jedi/third_party/typeshed/LICENSE"), \
+assert os.path.isfile("typeshed/LICENSE"), \
     "Please download the typeshed submodule first (Hint: git submodule update --init)"
-assert os.path.isfile("jedi/third_party/django-stubs/LICENSE.txt"), \
-    "Please download the django-stubs submodule first (Hint: git submodule update --init)"
 
 setup(name='jedi',
       version=version,
@@ -84,8 +82,7 @@ setup(name='jedi',
               'urllib3==1.26.4',
           ],
       },
-      package_data={'jedi': ['*.pyi', 'third_party/typeshed/LICENSE',
-                             'third_party/typeshed/README']},
+      package_data={'jedi': ['*.pyi']},
       platforms=['any'],
       classifiers=[
           'Development Status :: 4 - Beta',
