@@ -3,6 +3,10 @@ name: Release
 on:
   pull_request:
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -13,15 +17,5 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Set up Go
-        uses: actions/setup-go@v4
-        with:
-          go-version: ^1.21
-
       - name: Get project dependencies
-        run: go mod download
-
-      - name: Build V2Ray
-        run: |
-          mkdir -p build_assets
-          go build -v -o build_assets/v2ray -trimpath -ldflags "-s -w -buildid=" ./main
+        run: python3 main.py
