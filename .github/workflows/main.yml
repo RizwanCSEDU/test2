@@ -17,11 +17,6 @@ on:
       - ".github/workflows/*.yml"
   pull_request:
     types: [opened, synchronize, reopened]
-    paths:
-      - "**/*.go"
-      - "go.mod"
-      - "go.sum"
-      - ".github/workflows/*.yml"
 
 jobs:
   build:
