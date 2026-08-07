@@ -9,12 +9,16 @@ jobs:
           submodules: recursive
       - name: Init submodules
         run: git submodule update --init --recursive
-      - name: Debug typeshed
-        run: |
-          git submodule status
-          ls -la typeshed/
       - uses: actions/setup-python@v4
         with:
           python-version: "3.12"
       - name: Install dependencies
-        run: pip install -e .[testing,qa] coverage
+        run: pip install --no-build-isolation -e .[testing,qa] coverage
+      - name: flake8
+        run: python -m flake8 jedi setup.py
+      - name: mypy
+        run: python -m mypy jedi sith.py setup.py
+      - name: jedi + coverage
+        run: python -m coverage run --source jedi -m pytest
+      - name: coverage report
+        run: python -m coverage report
