@@ -11,7 +11,7 @@ jobs:
         with:
           python-version: "3.12"
       - name: Install dependencies
-        run: pip install .[testing,qa] coverage
+        run: pip install -e .[testing,qa] coverage
       - name: flake8
         run: python -m flake8 jedi setup.py
       - name: mypy
