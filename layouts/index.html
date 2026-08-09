@@ -1,5 +1,5 @@
 {{ define "head" }}
-{{ $css := resources.Get "css/main.css" | resources.PostCSS }}
+{{ $css := resources.Get "css/main.css" | css.PostCSS }}
 <link rel="stylesheet" href="{{ $css.RelPermalink }}">
 {{ end }}
 {{ define "main" }}
