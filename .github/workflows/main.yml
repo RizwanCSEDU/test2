@@ -1,8 +1,5 @@
 name: ci
 on:
-  push:
-    branches:
-      - feature1_new_title
   pull_request:
     types: [ opened ]
 
