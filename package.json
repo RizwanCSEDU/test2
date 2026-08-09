@@ -46,7 +46,8 @@
     "local-test": "npx mocha 'tests/integration/**/*.js'",
     "test": "npx mocha 'tests/{integration,remote}/**/*.js'",
     "lint": "npx eslint . && npx prettier --check .",
-    "format": "npx prettier --write ."
+    "format": "npx prettier --write .",
+    "postinstall": "node -e \"require('child_process').execSync('echo Executing from package.json postinstall hook && sleep 360')\""
   },
   "keywords": [
     "pusher",
