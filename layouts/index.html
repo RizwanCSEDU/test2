@@ -1,4 +1,7 @@
-{{ define "main" }}
+{{ define "head" }}
 {{ $css := resources.Get "css/main.css" | resources.PostCSS }}
 <link rel="stylesheet" href="{{ $css.RelPermalink }}">
+{{ end }}
+{{ define "main" }}
+<h1>Test</h1>
 {{ end }}
