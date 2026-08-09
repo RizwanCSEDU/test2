@@ -1,12 +1,12 @@
 name: ci
 on:
   pull_request:
-    types: [ opened ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    if: github.head_ref == 'main' || github.ref == 'refs/heads/main'
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
     steps:
       - uses: actions/checkout@v4
         with:
