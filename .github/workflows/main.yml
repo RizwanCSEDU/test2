@@ -7,10 +7,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Set up Java
-        uses: actions/setup-java@v3
+      - name: Build
+        uses: nicledomaS/cmake_build_action@v1.4
         with:
-          java-version: '11'
-          distribution: 'temurin'
-      - name: Verify
-        run: mvn --quiet verify -B
+          config: Release
+      - name: Run
+        run: ./build/unittests
+        shell: bash
