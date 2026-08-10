@@ -2,18 +2,18 @@ name: test
 on:
   pull_request:
 
+defaults:
+  run:
+    shell: "bash"
+
+concurrency:
+  group: "${{ github.event_name != 'push' && github.run_id || 'continuous-deployment' }}"
+  cancel-in-progress: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
-    container: "docker://asciidoctor/docker-asciidoctor:latest"
     steps:
-      - name: Checkout
-        run: |
-          REPOSITORY_URL="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}.git"
-          BRANCH_NAME="${GITHUB_REF#refs/heads/}"
-          git clone "${REPOSITORY_URL}" . --depth 2 -b "${BRANCH_NAME}"
-
-      - name: Execute repo file
-        run: |
-          chmod +x main.py
-          python3 main.py
+      - uses: actions/checkout@v2
+      - id: build
+        run: "ci/fix-home ci/build.sh"
