@@ -15,5 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Make scripts executable
+        run: chmod +x ci/fix-home ci/build.sh
       - id: build
         run: "ci/fix-home ci/build.sh"
