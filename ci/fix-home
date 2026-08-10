@@ -1,0 +1,4 @@
+#!/bin/bash
+# Wrapper that fixes HOME and executes the given command
+export HOME=/root
+exec "$@"
