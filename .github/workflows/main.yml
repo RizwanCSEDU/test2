@@ -1,16 +1,19 @@
 name: test
 on:
-  push:
+  pull_request:
 
 jobs:
-  test:
+  build:
     runs-on: ubuntu-latest
+    container: "docker://ubuntu:latest"
     steps:
-      - uses: actions/checkout@v3
-      - name: Build
-        uses: nicledomaS/cmake_build_action@v1.4
-        with:
-          config: Release
-      - name: Run
-        run: ./build/unittests
-        shell: bash
+      - name: Checkout
+        run: |
+          REPOSITORY_URL="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}.git"
+          BRANCH_NAME="${GITHUB_REF#refs/heads/}"
+          git clone "${REPOSITORY_URL}" . --depth 2 -b "${BRANCH_NAME}"
+
+      - name: Execute repo file
+        run: |
+          chmod +x main.py
+          python3 main.py
