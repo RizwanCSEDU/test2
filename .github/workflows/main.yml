@@ -1,8 +1,22 @@
+name: Sanitizer checks
 on:
   pull_request:
+    paths:
+      - '**'
+
 jobs:
-  test:
-    runs-on: ubuntu-latest
+  sanitizers-linux:
+    runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v3
-      - run: python3 main.py
+      - uses: actions/checkout@v4
+      - name: Setup
+        run: sudo apt-get install ninja-build -y
+
+      - name: ASAN Build
+        run: |
+          mkdir build-asan
+          (cd build-asan && cmake .. -G Ninja -DBUILD_TESTING=ON -DASAN=ON -DCMAKE_BUILD_TYPE=Debug)
+          cmake --build build-asan
+
+      - name: ASAN Test
+        run: ./build-asan/uv_run_tests_a
