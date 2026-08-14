@@ -86,18 +86,3 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: python3 main.py
-  test18:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - run: python3 main.py
-  test19:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - run: python3 main.py
-  test20:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - run: python3 main.py
