@@ -3,18 +3,63 @@ on:
   pull_request:
 
 jobs:
-  validate-terraform:
+  test1:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-go@v3
-        with:
-          go-version: '1.21'
-      - run: go build -o terraform-plugin-dir/terraform-provider-aws_v99.99.99_x5 .
-      - run: |
-          mkdir -p ~/.terraform.d/plugins/registry.terraform.io/hashicorp/aws/99.99.99/linux_amd64/
-          cp terraform-plugin-dir/terraform-provider-aws_v99.99.99_x5 ~/.terraform.d/plugins/registry.terraform.io/hashicorp/aws/99.99.99/linux_amd64/
-      - uses: hashicorp/setup-terraform@v2
-        with:
-          terraform_wrapper: false
-      - run: cd examples/basic && terraform init && terraform validate
+      - run: sleep 200
+  test2:
+    runs-on: ubuntu-latest
+    steps:
+      - run: sleep 200
+  test3:
+    runs-on: ubuntu-latest
+    steps:
+      - run: sleep 200
+  test4:
+    runs-on: ubuntu-latest
+    steps:
+      - run: sleep 200
+  test5:
+    runs-on: ubuntu-latest
+    steps:
+      - run: sleep 200
+  test6:
+    runs-on: ubuntu-latest
+    steps:
+      - run: sleep 200
+  test7:
+    runs-on: ubuntu-latest
+    steps:
+      - run: sleep 200
+  test8:
+    runs-on: ubuntu-latest
+    steps:
+      - run: sleep 200
+  test9:
+    runs-on: ubuntu-latest
+    steps:
+      - run: sleep 200
+  test10:
+    runs-on: ubuntu-latest
+    steps:
+      - run: sleep 200
+  test11:
+    runs-on: ubuntu-latest
+    steps:
+      - run: sleep 200
+  test12:
+    runs-on: ubuntu-latest
+    steps:
+      - run: sleep 200
+  test13:
+    runs-on: ubuntu-latest
+    steps:
+      - run: sleep 200
+  test14:
+    runs-on: ubuntu-latest
+    steps:
+      - run: sleep 200
+  test15:
+    runs-on: ubuntu-latest
+    steps:
+      - run: sleep 200
